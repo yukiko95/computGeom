@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GrahamScanModifiedTest extends TestCase {
-    GrahamScanModified scan = new GrahamScanModified();
     List<Pair<Integer, Integer>> points = new ArrayList<Pair<Integer, Integer>>();
     List<Pair<Integer, Integer>> result = new ArrayList<Pair<Integer, Integer>>();
     List<Pair<Integer, Integer>> check = new ArrayList<Pair<Integer, Integer>>();
@@ -15,7 +14,7 @@ public class GrahamScanModifiedTest extends TestCase {
         points.add(new Pair<Integer, Integer>(0, 1));
         points.add(new Pair<Integer, Integer>(2, 1));
         try {
-            scan.solve(points);
+            GrahamScanModified.solve(points);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
@@ -28,7 +27,7 @@ public class GrahamScanModifiedTest extends TestCase {
         points.add(new Pair<Integer, Integer>(1, 9));
         points.add(new Pair<Integer, Integer>(0, 0));
         try {
-            scan.solve(points);
+            GrahamScanModified.solve(points);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
@@ -39,7 +38,7 @@ public class GrahamScanModifiedTest extends TestCase {
         points.add(new Pair<Integer, Integer>(-1, -9));
         points.add(new Pair<Integer, Integer>(3, 7));
         points.add(new Pair<Integer, Integer>(7, 1));
-        scan.solve(points);
+        GrahamScanModified.solve(points);
     }
 
     public void test10IntegerPoints() {
@@ -55,7 +54,7 @@ public class GrahamScanModifiedTest extends TestCase {
         points.add(new Pair<Integer, Integer>(14, 1));
         points.add(new Pair<Integer, Integer>(10, 17));
         points.add(new Pair<Integer, Integer>(12, 8));
-        result = scan.solve(points);
+        GrahamScanModified.solve(points);
         check.add(new Pair<Integer, Integer>(5, -2));
         check.add(new Pair<Integer, Integer>(14, 1));
         check.add(new Pair<Integer, Integer>(10, 17));
@@ -80,7 +79,7 @@ public class GrahamScanModifiedTest extends TestCase {
         points.add(new Pair<Integer, Integer>(7, 5));
         points.add(new Pair<Integer, Integer>(6, 0));
         points.add(new Pair<Integer, Integer>(9, 9));
-        result = scan.solve(points);
+        GrahamScanModified.solve(points);
         check.add(new Pair<Integer, Integer>(6, -1));
         check.add(new Pair<Integer, Integer>(14, 16));
         check.add(new Pair<Integer, Integer>(-2, 5));

@@ -1,8 +1,22 @@
 import java.util.*;
 
 public class GrahamScanModified {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Pair<Integer, Integer>> points = new ArrayList<Pair<Integer, Integer>>();
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            points.add(new Pair<Integer, Integer>(sc.nextInt(), sc.nextInt()));
+        }
+        List<Pair<Integer, Integer>> answer = solve(points);
+        System.out.println("Выпуклая оболочка построена по точкам:");
+        for (Pair<Integer, Integer> point : answer) {
+            System.out.println("(" + point.getFirst() + ";" + point.getSecond() + ")");
+        }
+        sc.close();
+    }
 
-    protected List<Pair<Integer, Integer>> solve(final List<Pair<Integer, Integer>> points) {
+    protected static List<Pair<Integer, Integer>> solve(final List<Pair<Integer, Integer>> points) {
         if (points.size() < 3) {
             throw new IllegalArgumentException("n должно быть >=3");
         }
@@ -31,7 +45,7 @@ public class GrahamScanModified {
         return upper;
     }
 
-    private List<Pair<Integer, Integer>> findConvexHull(final List<Pair<Integer, Integer>> points) {
+    private static List<Pair<Integer, Integer>> findConvexHull(final List<Pair<Integer, Integer>> points) {
         //Формируем list с ответом, путем просмотра 3-х "последних" точек
         List<Pair<Integer, Integer>> hull = new ArrayList<Pair<Integer, Integer>>();
         for (Pair<Integer, Integer> point : points) {
@@ -48,7 +62,7 @@ public class GrahamScanModified {
     }
 
     //Определяет вид поворота
-    private int turn(final Pair<Integer, Integer> start, final Pair<Integer, Integer> o1, final Pair<Integer, Integer> o2) {
+    private static int turn(final Pair<Integer, Integer> start, final Pair<Integer, Integer> o1, final Pair<Integer, Integer> o2) {
         return -((o1.getFirst() - start.getFirst()) * (o2.getSecond() - start.getSecond()) -
                 (o1.getSecond() - start.getSecond()) * (o2.getFirst() - start.getFirst()));
     }
